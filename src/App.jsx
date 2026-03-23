@@ -351,12 +351,75 @@ function TickerTape({ hbarPrice }) {
 }
 
 function GlobalStyles() {
+  useEffect(() => {
+    // Inject preconnect + font link into <head> once
+    if (document.getElementById('synth-fonts')) return;
+
+    const preconnect1 = document.createElement('link');
+    preconnect1.rel = 'preconnect';
+    preconnect1.href = 'https://fonts.googleapis.com';
+
+    const preconnect2 = document.createElement('link');
+    preconnect2.rel = 'preconnect';
+    preconnect2.href = 'https://fonts.gstatic.com';
+    preconnect2.crossOrigin = 'anonymous';
+
+    const link = document.createElement('link');
+    link.id = 'synth-fonts';
+    link.rel = 'stylesheet';
+    link.href = 'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;700&display=swap';
+
+    document.head.appendChild(preconnect1);
+    document.head.appendChild(preconnect2);
+    document.head.appendChild(link);
+  }, []);
+
   return (
     <style>{`
-      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;700&display=swap&font-display=swap');
       *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
-      html, body { height:100%; overflow:hidden; background:#080b10; -webkit-tap-highlight-color:transparent; }
-      /* ... rest unchanged */
+      html, body {
+        height:100%; overflow:hidden; background:#080b10;
+        -webkit-tap-highlight-color:transparent;
+        font-family: 'Space Grotesk', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      }
+      /* Prevent FOUT by declaring fallback stacks */
+      body, button, input {
+        font-family: 'Space Grotesk', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      }
+      input[type=number]::-webkit-outer-spin-button,
+      input[type=number]::-webkit-inner-spin-button { -webkit-appearance:none; margin:0; }
+      input[type=number] { -moz-appearance:textfield; }
+      ::-webkit-scrollbar { display:none; }
+      @keyframes fade-in        { from{opacity:0} to{opacity:1} }
+      @keyframes fade-scale     { from{opacity:0;transform:scale(.94)} to{opacity:1;transform:scale(1)} }
+      @keyframes spin           { to{transform:rotate(360deg)} }
+      @keyframes slow-rotate    { to{transform:rotate(360deg) translateY(-50%)} }
+      @keyframes splash-logo    { 0%{opacity:0;transform:scale(.7)} 60%{opacity:1;transform:scale(1.04)} 100%{opacity:1;transform:scale(1)} }
+      @keyframes splash-exit    { to{opacity:0;transform:scale(1.1)} }
+      @keyframes scan-down      { 0%{top:-2px;opacity:0} 5%{opacity:1} 95%{opacity:1} 100%{top:100%;opacity:0} }
+      @keyframes load-bar       { 0%{width:0} 100%{width:100%} }
+      @keyframes pulse-ring     { 0%{transform:scale(.8);opacity:.8} 70%{transform:scale(2.2);opacity:0} 100%{transform:scale(2.2);opacity:0} }
+      @keyframes glow-breathe   { 0%,100%{opacity:.6;transform:scale(1)} 50%{opacity:1;transform:scale(1.08)} }
+      @keyframes float1         { 0%,100%{transform:translate(0,0)} 50%{transform:translate(8px,-14px)} }
+      @keyframes float2         { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-10px,10px)} }
+      @keyframes float3         { 0%,100%{transform:translate(0,0)} 50%{transform:translate(6px,-8px)} }
+      @keyframes orbit-1        { from{transform:rotate(0deg) translateX(80px) rotate(0deg)} to{transform:rotate(360deg) translateX(80px) rotate(-360deg)} }
+      @keyframes orbit-2        { from{transform:rotate(120deg) translateX(80px) rotate(-120deg)} to{transform:rotate(480deg) translateX(80px) rotate(-480deg)} }
+      @keyframes orbit-3        { from{transform:rotate(240deg) translateX(80px) rotate(-240deg)} to{transform:rotate(600deg) translateX(80px) rotate(-600deg)} }
+      @keyframes ring-draw      { to{stroke-dashoffset:0} }
+      @keyframes check-draw     { to{stroke-dashoffset:0} }
+      @keyframes ring-out       { 0%{transform:scale(1);opacity:.8} 100%{transform:scale(1.5);opacity:0} }
+      @keyframes ripple         { to{transform:scale(4);opacity:0} }
+      @keyframes conv-pulse     { 0%,100%{opacity:.3;transform:scale(.8)} 50%{opacity:1;transform:scale(1)} }
+      @keyframes success-pulse  { 0%,100%{box-shadow:0 0 30px rgba(0,229,160,0.1)} 50%{box-shadow:0 0 70px rgba(0,229,160,0.5)} }
+      @keyframes line-pulse     { 0%,100%{opacity:.4} 50%{opacity:1} }
+      @keyframes line-dot-move  { 0%{top:10%;opacity:0} 10%{opacity:1} 90%{opacity:1} 100%{top:90%;opacity:0} }
+      @keyframes data-stream-h  { 0%{opacity:0;transform:scaleX(0)} 50%{opacity:1;transform:scaleX(1)} 100%{opacity:0;transform:scaleX(0)} }
+      @keyframes ticker         { from{transform:translateX(0)} to{transform:translateX(-33.33%)} }
+      @keyframes spin-slow      { to{transform:rotate(360deg)} }
+      @keyframes slide-in-right { from{opacity:0;transform:translateX(40px)} to{opacity:1;transform:translateX(0)} }
+      @keyframes slide-in-left  { from{opacity:0;transform:translateX(-40px)} to{opacity:1;transform:translateX(0)} }
+      @keyframes reward-glow    { 0%,100%{box-shadow:0 0 20px rgba(245,158,11,0.2)} 50%{box-shadow:0 0 40px rgba(245,158,11,0.5)} }
     `}</style>
   );
 }
