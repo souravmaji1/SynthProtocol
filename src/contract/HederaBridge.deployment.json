@@ -1,0 +1,8 @@
+{
+  "network": "hedera-testnet",
+  "contractId": "0.0.8044850",
+  "evmAddress": "0x00000000000000000000000000000000007ac132",
+  "owner": "0.0.5020213",
+  "relayer": "0xa809c5e6f65363ff61a89d5518356c0efff4b28c",
+  "deployedAt": "2026-02-27T07:39:37.156Z"
+}
