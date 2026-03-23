@@ -1,8 +1,0 @@
-{
-  "network": "hedera-testnet",
-  "contract": "FungibleTokenFactory",
-  "contractId": "0.0.8313423",
-  "evmAddress": "0x00000000000000000000000000000000007eda4f",
-  "owner": "0.0.5020213",
-  "deployedAt": "2026-03-21T04:21:54.976Z"
-}
