@@ -10,10 +10,10 @@ import {
 } from '@buidlerlabs/hashgraph-react-wallets';
 import { HashpackConnector } from '@buidlerlabs/hashgraph-react-wallets/connectors';
 
-const SYNTH_MINTER_CONTRACT_ID = '0.0.8347141';
-const SYNTH_MINTER_EVM_ADDR    = '0x00000000000000000000000000000000007f5e05';
-const SAUCE_STAKING_CONTRACT_ID = '0.0.8347163'; // update after deploy
-const SAUCE_STAKING_EVM_ADDR    = '0x00000000000000000000000000000000007f5e1b';  // update after deploy
+const SYNTH_MINTER_CONTRACT_ID = '0.0.8353853';
+const SYNTH_MINTER_EVM_ADDR    = '0x00000000000000000000000000000000007f783d';
+const SAUCE_STAKING_CONTRACT_ID = '0.0.8353858'; // update after deploy
+const SAUCE_STAKING_EVM_ADDR    = '0x00000000000000000000000000000000007f7842';  // update after deploy
 const MIRROR_BASE              = 'https://testnet.mirrornode.hedera.com/api/v1';
 const HASHIO_RPC               = 'https://testnet.hashio.io/api';
 const CREATE_TOKEN_FEE_HBAR    = 25;
